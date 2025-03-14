@@ -1,6 +1,7 @@
 import { React, useRef, useState } from 'react';
 import './todo-field.css';
 import { useDispatch } from 'react-redux';
+import { changeDoneAC, deleteTodoAC } from '../../../store/todoReducer';
 
 const TodoField = ({ text, id, status }) => {
     const [disabled, setDisabled] = useState(false);
@@ -10,11 +11,11 @@ const TodoField = ({ text, id, status }) => {
     const dispatch = useDispatch();
 
     const deleteTodo = () => {
-        dispatch({ type: 'DELETE_TODO', id: id });
+        dispatch(deleteTodoAC(id));
     };
 
     const changeTodo = () => {
-        dispatch({ type: 'CHANGE_DONE', id: id })
+        dispatch(changeDoneAC(id));
     };
 
     const showInput = () => {
